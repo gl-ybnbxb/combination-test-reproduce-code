@@ -14,9 +14,9 @@ plot_figure_s2 = function(prop = c(4,1), rho = -0.2, alpha = 5e-4, copula='gauss
 
   # read and organize the data
   if(prop[1]==0){
-    power.filename = paste0("power_alpha_",alpha,"_cor_",rho,"_mean_(u_", prop[2],")_copula_",copula,".csv")
+    power.filename = paste0("data/power_alpha_",alpha,"_cor_",rho,"_mean_(u_", prop[2],")_copula_",copula,".csv")
   }else{
-    power.filename = paste0("power_alpha_",alpha,"_cor_",rho,"_mean_(0_",prop[1],",u_", prop[2],")_copula_",copula,".csv")
+    power.filename = paste0("data/power_alpha_",alpha,"_cor_",rho,"_mean_(0_",prop[1],",u_", prop[2],")_copula_",copula,".csv")
   }
 
   power.mat = read.csv(power.filename)

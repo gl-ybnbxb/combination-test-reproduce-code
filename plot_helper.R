@@ -52,6 +52,7 @@ plot_figure2_s1 = function(data_plot, rho, alpha, dim){
   # save the plot
   filename = paste0("validity_n_",dim,"_error_",alpha,"_correlation_",rho,'.pdf')
   pathname = getwd()
+  pathname = paste0(pathname,'/figure')
   ggsave(filename, p, width = 20, height = 10, path = pathname)
 }
 

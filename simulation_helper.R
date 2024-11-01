@@ -1,5 +1,4 @@
-source("../utils.R")
-source("../simulation_function.R")
+library(heavytailcombtest)
 
 #' Simulation function for investgating connection between tail index and validity.
 #'

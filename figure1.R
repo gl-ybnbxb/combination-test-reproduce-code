@@ -1,4 +1,4 @@
-source('../utils.R')
+library(heavytailcombtest)
 library(Hmisc)
 library(colorspace)
 library(scales)

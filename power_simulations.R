@@ -40,9 +40,9 @@ power_simulator = function(signal_seq = seq(0, 6, by = 0.5),
 
   # save the power data
   if(prop[1]==0){
-    power.filename = paste0("power_alpha_",alpha,"_cor_",rho,"_mean_(u_", prop[2],")_copula_",copula,".csv")
+    power.filename = paste0("data/power_alpha_",alpha,"_cor_",rho,"_mean_(u_", prop[2],")_copula_",copula,".csv")
   }else{
-    power.filename = paste0("power_alpha_",alpha,"_cor_",rho,"_mean_(0_",prop[1],",u_", prop[2],")_copula_",copula,".csv")
+    power.filename = paste0("data/power_alpha_",alpha,"_cor_",rho,"_mean_(0_",prop[1],",u_", prop[2],")_copula_",copula,".csv")
   }
   write.csv(power.dat, power.filename)
 }
