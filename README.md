@@ -31,6 +31,8 @@ To reproduce Figure 3 and 4, first make the folder `data` and then use `power_si
 
 To reproduce Figure S2, first make the folder `data` and then use example code in `power_simulations.R` to generate data frames containing power of different methods varying signal levels. The data frames will be saved in the `data` folder as csv files. Then, use example code in `figure_s2.R` to generate each sub figure in Figure S2. 
 
+To reproduce Figures 5 and 6, use scripts Figure_5_circadian_v1.R and Figure_6_GWAS_v3.R. Data and additional utility and helper functions are in folder data_scripts.
+
 ## Tables
 
 `tables.R` can reproduce Table 2 and S1-S3 in the paper.
