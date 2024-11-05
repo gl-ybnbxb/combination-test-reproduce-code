@@ -1,5 +1,3 @@
-setwd("~/Library/CloudStorage/Dropbox/Collaborations/cauchy_combination/github_figures_5_6")
-
 library(pheatmap)
 library(rmutil)
 source('data_scripts/transformation_test_new.R')
@@ -48,8 +46,33 @@ for(fdr.thresh in c(0.05, 0.2)){
   }
   overlap.mat.txt=(overlap.mat)
   overlap.mat.txt[is.na(overlap.mat.txt)]=''
-  pdf(file=paste0('pval_sig_genes_SCZ_',fdr.thresh,'_v3.pdf'), width=6, height=6)
-  pheatmap(log(overlap.mat), cluster_rows=F, cluster_cols=F, na_col="white", display_numbers = overlap.mat.txt,
+  pdf(file=paste0('figure/pval_sig_genes_SCZ_',fdr.thresh,'_v3.pdf'), width=6, height=6)
+  pheatmap(log(overlap.mat), cluster_rows=F, cluster_cols=F, na_col="white", 
+           display_numbers = overlap.mat.txt, fontsize_number=14,
+           legend = FALSE, main=paste('No. of sig. genes after FDR control:',fdr.thresh,'SCZ'))
+  dev.off()
+}
+
+
+# For those whose numbers of SNPs are smaller than 50.
+# Call significant genes after FDR control
+# And compare the number of significant genes across methods
+output = output[output$N.snps<=50,]
+for(fdr.thresh in c(0.05, 0.2)){
+  overlap.mat=matrix(nrow=ncol(output)-3, ncol=ncol(output)-3)
+  rownames(overlap.mat)=colnames(overlap.mat)=colnames(output)[-(1:3)]
+  for(i in 1:nrow(overlap.mat)){
+    for(j in i:ncol(overlap.mat)){
+      i.rej= which(p.adjust(output[,rownames(overlap.mat)[i]], method='fdr') < fdr.thresh)
+      j.rej= which(p.adjust(output[,colnames(overlap.mat)[j]], method='fdr') < fdr.thresh)
+      overlap.mat[i,j]=length(intersect(i.rej, j.rej))
+    }
+  }
+  overlap.mat.txt=(overlap.mat)
+  overlap.mat.txt[is.na(overlap.mat.txt)]=''
+  pdf(file=paste0('figure/less_snps_pval_sig_genes_SCZ_',fdr.thresh,'_v3.pdf'), width=6, height=6)
+  pheatmap(log(overlap.mat), cluster_rows=F, cluster_cols=F, na_col="white", 
+           display_numbers = overlap.mat.txt, fontsize_number=14,
            legend = FALSE, main=paste('No. of sig. genes after FDR control:',fdr.thresh,'SCZ'))
   dev.off()
 }

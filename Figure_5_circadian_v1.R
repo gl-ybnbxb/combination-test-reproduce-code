@@ -1,4 +1,3 @@
-setwd("~/Library/CloudStorage/Dropbox/Collaborations/cauchy_combination/github_figures_5_6")
 library(MetaCycle)
 library(gap)
 library(rmutil)
