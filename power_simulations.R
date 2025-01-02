@@ -16,7 +16,7 @@ source("simulation_helper.R")
 power_simulator = function(signal_seq = seq(0, 6, by = 0.5),
                            prop = c(3,2),rho = 0, alpha = 5e-4,
                            copula = 't', dof = 2,
-                           one_sided = T, reptimes = 1e5,){
+                           one_sided = T, reptimes = 1e5){
 
   require(reshape2)
   dim = sum(prop)
